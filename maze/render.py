@@ -4,25 +4,26 @@ from .maze import Maze, BIT_WALL
 from .point import Point
 
 
-def render(maze: Maze, path: list[Point]):
-    def isWall(v: int) -> bool:
-        return v is None or v & BIT_WALL == 1
+def is_wall(v: int) -> bool:
+    return v is None or v & BIT_WALL == 1
 
+
+def render(maze: Maze, path: list[Point]):
     for row in range(maze.height):
         s = ''
         for col in range(maze.width):
             p = Point(col, row)
             v = maze.cell(p)
 
-            if isWall(v):
+            if is_wall(v):
                 up    = maze.cell(Point(col    , row - 1))
                 down  = maze.cell(Point(col    , row + 1))
                 left  = maze.cell(Point(col - 1, row    ))
                 right = maze.cell(Point(col + 1, row    ))
 
-                if (isWall(up) or isWall(down)) and (isWall(left) or isWall(right)):
+                if (is_wall(up) or is_wall(down)) and (is_wall(left) or is_wall(right)):
                     s += '+'
-                elif not (isWall(up) or isWall(down)):
+                elif not (is_wall(up) or is_wall(down)):
                     s += '-'
                 else:
                     s += '|'
@@ -34,7 +35,7 @@ def render(maze: Maze, path: list[Point]):
                     p_right = Point(col + 1, row    )
 
                     color = 'green'
-                    if any([(p not in path) for p in [p_up, p_down, p_left, p_right] if not isWall(maze.cell(p))]):
+                    if any([(p not in path) for p in [p_up, p_down, p_left, p_right] if not is_wall(maze.cell(p))]):
                         color = 'red'
 
                     s += colored('*', color)

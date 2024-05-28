@@ -1,7 +1,7 @@
 import random
 
-from .point import Point
-from .maze import (Maze, BIT_WALL)
+from ..point import Point
+from ..maze import (Maze, BIT_WALL)
 
 
 BIT_VISITED = 0b10  # second bit
@@ -28,7 +28,7 @@ def unvisitedNeighbors(maze: Maze, p: Point, dist: int = 2):
         Point(p.x - dist, p.y),
         Point(p.x, p.y - dist),
         Point(p.x + dist, p.y),
-        Point(p.x, p.y + dist)] if maze.isInside(p) and isSpace(maze.cell(p)) and not isVisited(maze, p)]
+        Point(p.x, p.y + dist)] if maze.is_inside(p) and isSpace(maze.cell(p)) and not isVisited(maze, p)]
 
 
 def cleanVisited(maze: Maze):

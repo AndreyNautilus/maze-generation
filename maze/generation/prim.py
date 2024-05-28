@@ -1,7 +1,7 @@
 import random
 
-from .point import Point
-from .maze import (Maze, BIT_WALL)
+from ..point import Point
+from ..maze import (Maze, BIT_WALL)
 
 
 def erase_wall(maze: Maze, p: Point):
@@ -17,7 +17,7 @@ def get_neighbours(maze: Maze, p: Point) -> list[Point]:
         Point(p.x - 2, p.y),
         Point(p.x,     p.y - 2),
         Point(p.x + 2, p.y),
-        Point(p.x,     p.y + 2)] if maze.isInside(p) and is_space(maze.cell(p))]
+        Point(p.x,     p.y + 2)] if maze.is_inside(p) and is_space(maze.cell(p))]
 
 
 def generate(width: int, height: int) -> Maze:

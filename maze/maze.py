@@ -32,7 +32,7 @@ class Maze:
         #self.cells = _create_cells_filled(self.width, self.height)
 
 
-    def isInside(self, p: Point) -> bool:
+    def is_inside(self, p: Point) -> bool:
         return 0 <= p.x and p.x < self.width and \
                0 <= p.y and p.y < self.height
 
