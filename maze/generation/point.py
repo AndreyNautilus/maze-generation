@@ -15,5 +15,8 @@ class Point:
     def __str__(self):
         return "(" + str(self.x) + ", " + str(self.y) + ")"
 
+    def __repr__(self):
+        return str(self)
+
     def normSq(self):
         return self.x * self.x + self.y * self.y;

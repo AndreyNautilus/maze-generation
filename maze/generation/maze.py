@@ -4,7 +4,7 @@ from .point import Point
 BIT_WALL = 0b1  # last bit
 
 
-def create_cells_as_grid(width: int, height: int) -> list[int]:
+def _create_cells_as_grid(width: int, height: int) -> list[int]:
     if width % 2 == 0 or height % 2 == 0:
         raise ValueError(f'Both {width=} and {height=} must be odd')
 
@@ -18,7 +18,7 @@ def create_cells_as_grid(width: int, height: int) -> list[int]:
     return cells
 
 
-def create_cells_filled(width: int, height: int) -> list[int]:
+def _create_cells_filled(width: int, height: int) -> list[int]:
     cells = [BIT_WALL] * (width * height)
     return cells
 
@@ -28,8 +28,8 @@ class Maze:
         self.width = width
         self.height = height
 
-        self.cells = create_cells_as_grid(self.width, self.height)
-        #self.cells = create_cells_filled(self.width, self.height)
+        self.cells = _create_cells_as_grid(self.width, self.height)
+        #self.cells = _create_cells_filled(self.width, self.height)
 
 
     def isInside(self, p: Point) -> bool:
